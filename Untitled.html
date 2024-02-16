@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine's Day E-Card</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: magenta; /* Changed background color to magenta */
+        color: white; /* Changed text color to white */
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+    }
+
+    .message {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
+    .cta {
+        padding: 10px 20px;
+        background-color: white; /* Changed button background color to white */
+        color: magenta; /* Changed button text color to magenta */
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 5px;
+    }
+
+    .no-option {
+        position: absolute;
+        transition: left 1s, top 1s;
+    }
+
+    .escaped {
+        left: 100%;
+        top: 100%;
+    }
+</style>
+</head>
+<body>
+    <div class="card">
+        <div class="message">
+            <p>Should we go on a date?</p>
+        </div>
+        <a href="#" class="cta" id="yesBtn">Yes</a>
+        <a href="#" class="cta no-option" id="noBtn">No</a>
+    </div>
+
+    <script>
+        document.getElementById('yesBtn').addEventListener('click', function() {
+            alert('Email me back, if you know who I am, and I\'ll take you on a date! 💌😄');
+        });
+
+        document.getElementById('noBtn').addEventListener('mouseover', function() {
+            // Calculate random position
+            let maxX = window.innerWidth - this.clientWidth;
+            let maxY = window.innerHeight - this.clientHeight;
+            let newX = Math.floor(Math.random() * maxX);
+            let newY = Math.floor(Math.random() * maxY);
+
+            this.style.left = newX + 'px';
+            this.style.top = newY + 'px';
+
+            // Add animation class
+            this.classList.add('escaped');
+
+            // Remove animation class after 1s
+            setTimeout(() => {
+                this.classList.remove('escaped');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
